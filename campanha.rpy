@@ -7,8 +7,8 @@ screen campanha:
         xalign 0.14
         yalign 0.5
         spacing 150
-        imagebutton auto "images/capitulos_%s.png" action ShowMenu("capitulos")
-        imagebutton auto "images/voltar_%s.png" action [ Hide ("capitulos"), Show ("demomenu") ]
+        imagebutton auto "images/capitulos_%s.png" action ShowMenu("capitulos") activate_sound "audio/gun_reload_lock_or_click_sound.mp3" hover_sound "audio/zipclick.mp3"
+        imagebutton auto "images/voltar_%s.png" action [ Hide ("capitulos"), Show ("demomenu") ] activate_sound "audio/gun_reload_lock_or_click_sound.mp3" hover_sound "audio/zipclick.mp3"
 
 
 
@@ -20,4 +20,4 @@ screen capitulos:
         xalign 0.5
         yalign 0.45
         spacing 10
-        imagebutton auto "images/comece_%s.png" action Start("start")
+        imagebutton auto "images/comece_%s.png" action Start("start") activate_sound "audio/gun_reload_lock_or_click_sound.mp3" hover_sound "audio/zipclick.mp3"

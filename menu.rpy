@@ -5,19 +5,20 @@ screen demomenu:
         xalign 0.02
         yalign 0.1
         spacing 20
-        imagebutton auto "images/menu/iniciar_%s.png" action ShowMenu("campanha") activate_sound "audio/gun_reload_lock_or_click_sound.mp3" hover_sound "audio/zipclick.mp3"
-        imagebutton auto "images/menu/ajuda_%s.png" action ShowMenu("helpdemo") activate_sound "audio/gun_reload_lock_or_click_sound.mp3" hover_sound "audio/zipclick.mp3"
-        imagebutton auto "images/menu/preferencias_%s.png" action ShowMenu("preferencesdemo") activate_sound "audio/gun_reload_lock_or_click_sound.mp3" hover_sound "audio/zipclick.mp3"
-        imagebutton auto "images/menu/sobre_%s.png" action ShowMenu("about") activate_sound "audio/gun_reload_lock_or_click_sound.mp3" hover_sound "audio/zipclick.mp3"
-        imagebutton auto "images/menu/sair_%s.png" action Quit(confirm=False) activate_sound "audio/gun_reload_lock_or_click_sound.mp3" hover_sound "audio/zipclick.mp3"
+        #imagebutton auto "images/menu/iniciar_%s.png" action ShowMenu("campanha") activate_sound "audio/gun_reload_lock_or_click_sound.mp3" hover_sound "audio/zipclick.mp3"
+        textbutton _("Iniciar")action ShowMenu("campanha") activate_sound "audio/gun_reload_lock_or_click_sound.mp3" hover_sound "audio/zipclick.mp3"
 
+        textbutton _("Ajuda")action ShowMenu("helpdemo") activate_sound "audio/gun_reload_lock_or_click_sound.mp3" hover_sound "audio/zipclick.mp3"
+        #imagebutton auto "images/menu/ajuda_%s.png" action ShowMenu("helpdemo") activate_sound "audio/gun_reload_lock_or_click_sound.mp3" hover_sound "audio/zipclick.mp3"
 
+        textbutton _("Preferencias")action ShowMenu("preferencesdemo") activate_sound "audio/gun_reload_lock_or_click_sound.mp3" hover_sound "audio/zipclick.mp3"
+        #imagebutton auto "images/menu/preferencias_%s.png" action ShowMenu("preferencesdemo") activate_sound "audio/gun_reload_lock_or_click_sound.mp3" hover_sound "audio/zipclick.mp3"
 
+        textbutton _("Sobre")action ShowMenu("aboutdemo") activate_sound "audio/gun_reload_lock_or_click_sound.mp3" hover_sound "audio/zipclick.mp3"
+        #imagebutton auto "images/menu/sobre_%s.png" action ShowMenu("aboutdemo") activate_sound "audio/gun_reload_lock_or_click_sound.mp3" hover_sound "audio/zipclick.mp3"
 
-
-
-
-
+        textbutton _("Sair")action Quit(confirm=False) activate_sound "audio/gun_reload_lock_or_click_sound.mp3" hover_sound "audio/zipclick.mp3"
+        #imagebutton auto "images/menu/sair_%s.png" action Quit(confirm=False) activate_sound "audio/gun_reload_lock_or_click_sound.mp3" hover_sound "audio/zipclick.mp3"
 
 
 
@@ -25,29 +26,28 @@ screen demomenu:
 #imagebutton "images/general_background.png" focus_mask True action ShowMenu("help")    --TESTE Q TALVEZ DE PRA USAR--
 screen preferencesdemo():
     add im.Scale("gui/base_deserto.jpg", 1920, 1080)
+    text " {size=+10} {font=NAPAV.ttf}PREFERENCIAS{/font}{/size}" xalign 0.5 yalign 0.2
     tag menu
     hbox:
-        xalign 0.97
+        xalign 1.1
         yalign 0.6
-        spacing 15
+        spacing 20
         box_wrap True
-
         if renpy.variant("pc") or renpy.variant("web"):
              vbox:
                  style_prefix "radio"
                  label _("Display")
-                 textbutton _("Window") action Preference("display", "window")
-                 textbutton _("Fullscreen") action Preference("display", "fullscreen")
+                 textbutton _("Window") action Preference("display", "window") activate_sound "audio/gun_reload_lock_or_click_sound.mp3" hover_sound "audio/zipclick.mp3"
+                 textbutton _("Fullscreen") action Preference("display", "fullscreen") activate_sound "audio/gun_reload_lock_or_click_sound.mp3" hover_sound "audio/zipclick.mp3"
 
 
 
         vbox:
             style_prefix "check"
             label _("Skip")
-            textbutton _("Unseen Text") action Preference("skip", "toggle")
-            textbutton _("After Choices") action Preference("after choices", "toggle")
-            textbutton _("Transitions") action InvertSelected(Preference("transitions", "toggle"))
-
+            textbutton _("Unseen Text") action Preference("skip", "toggle") activate_sound "audio/gun_reload_lock_or_click_sound.mp3" hover_sound "audio/zipclick.mp3"
+            textbutton _("After Choices") action Preference("after choices", "toggle") activate_sound "audio/gun_reload_lock_or_click_sound.mp3" hover_sound "audio/zipclick.mp3"
+            textbutton _("Transitions") action InvertSelected(Preference("transitions", "toggle")) activate_sound "audio/gun_reload_lock_or_click_sound.mp3" hover_sound "audio/zipclick.mp3"
 
 
 
@@ -65,6 +65,9 @@ screen preferencesdemo():
                 label _("Auto-Forward Time")
 
                 bar value Preference("auto-forward time")
+
+
+
 
 
 
@@ -100,43 +103,44 @@ screen preferencesdemo():
                     null height gui.pref_spacing
 
                     textbutton _("Mute All"):
-                        action Preference("all mute", "toggle")
+                        action Preference("all mute", "toggle") activate_sound "audio/gun_reload_lock_or_click_sound.mp3" hover_sound "audio/zipclick.mp3"
                         style "mute_all_button"
 
 
 
-            vbox:  #texbutton voltar
-                style_prefix "under"
-                textbutton _("Voltar") action ShowMenu("demomenu") pos (-1750, 450)
+
+    vbox:  #texbutton voltar
+        style_prefix "under"
+        textbutton _("Voltar") action ShowMenu("demomenu") pos (25, 980)activate_sound "audio/gun_reload_lock_or_click_sound.mp3" hover_sound "audio/zipclick.mp3"
 
     ##frame do canto
     vbox:
         #style_prefix "gm_nav"
         xalign 0.02
         yalign 0.2
-        spacing 10
-
+        spacing 20
         textbutton _("Preferencia") action ShowMenu("preferencesdemo")
-        textbutton _("Ajuda") action ShowMenu("helpdemo")
+        textbutton _("Ajuda") action ShowMenu("helpdemo")activate_sound "audio/gun_reload_lock_or_click_sound.mp3" hover_sound "audio/zipclick.mp3"
         #textbutton _("Save Game") action ShowMenu("save")
         #textbutton _("Load Game") action ShowMenu("load")
-        textbutton _("Sobre") action ShowMenu("about")
+        textbutton _("Sobre") action ShowMenu("aboutdemo")activate_sound "audio/gun_reload_lock_or_click_sound.mp3" hover_sound "audio/zipclick.mp3"
 
 
 screen helpdemo:
     add im.Scale("gui/help.png", 1920, 1080)
+    text " {size=+10} {font=NAPAV.ttf}AJUDA{/font}{/size}" xalign 0.5 yalign 0.18
     tag menu
     default device = "keyboard"
     #style_prefix "help"
 
     vbox:
         xalign 0.7
-        yalign 0.5
+        yalign 0.9
         spacing 23
 
         hbox:
-            textbutton _("Keyboard") action SetScreenVariable("device", "keyboard")
-            textbutton _("Mouse") action SetScreenVariable("device", "mouse")
+            textbutton _("Keyboard") action SetScreenVariable("device", "keyboard")activate_sound "audio/gun_reload_lock_or_click_sound.mp3" hover_sound "audio/zipclick.mp3"
+            textbutton _("Mouse") action SetScreenVariable("device", "mouse")activate_sound "audio/gun_reload_lock_or_click_sound.mp3" hover_sound "audio/zipclick.mp3"
 
             if GamepadExists():
                 textbutton _("Gamepad") action SetScreenVariable("device", "gamepad")
@@ -156,13 +160,61 @@ screen helpdemo:
         #style_prefix "gm_nav"
         xalign 0.02
         yalign 0.2
-        spacing 10
-        textbutton _("Preferencia") action ShowMenu("preferencesdemo")
+        spacing 20
+        textbutton _("Preferencia") action ShowMenu("preferencesdemo")activate_sound "audio/gun_reload_lock_or_click_sound.mp3" hover_sound "audio/zipclick.mp3"
         textbutton _("Ajuda") action ShowMenu("helpdemo")
         #textbutton _("Save Game") action ShowMenu("save")
         #textbutton _("Load Game") action ShowMenu("load")
-        textbutton _("Sobre") action ShowMenu("about")
+        textbutton _("Sobre") action ShowMenu("aboutdemo")activate_sound "audio/gun_reload_lock_or_click_sound.mp3" hover_sound "audio/zipclick.mp3"
 
         vbox:  #texbutton voltar
             style_prefix "under"
-            textbutton _("Voltar") action ShowMenu("demomenu") pos (-06, 600)
+            textbutton _("Voltar") action ShowMenu("demomenu") pos (-06, 650)activate_sound "audio/gun_reload_lock_or_click_sound.mp3" hover_sound "audio/zipclick.mp3"
+
+
+
+screen aboutdemo():
+    add "gui/sobre.png"
+    text " {size=+10} {font=NAPAV.ttf}SOBRE{/font}{/size}" xalign 1.05 yalign 0.19
+    tag menu
+
+    style_prefix "history"
+    hbox:
+        xpos 400
+        yalign 0.4
+        spacing 20
+
+        vbox:
+            label "[config.name!t]" xpos -610
+            text _("Version [config.version!t]\n") ypos 10
+
+            ## gui.about is usually set in options.rpy.
+            if gui.about:
+                text "[gui.about!t]\n" ypos 100
+            text _("Made with {a=https://www.renpy.org/}Ren'Py{/a} [renpy.version_only].\n\n[renpy.license!t]") xpos 250 ypos 200
+
+
+
+    ##frame do canto
+    vbox:
+        #style_prefix "gm_nav"
+        xalign 0.02
+        yalign 0.2
+        spacing 20
+        textbutton _("Preferencia") action ShowMenu("preferencesdemo")activate_sound "audio/gun_reload_lock_or_click_sound.mp3" hover_sound "audio/zipclick.mp3"
+        textbutton _("Ajuda") action ShowMenu("helpdemo")activate_sound "audio/gun_reload_lock_or_click_sound.mp3" hover_sound "audio/zipclick.mp3"
+        #textbutton _("Save Game") action ShowMenu("save")
+        #textbutton _("Load Game") action ShowMenu("load")
+        textbutton _("Sobre") action ShowMenu("aboutdemo")
+
+        vbox:  #texbutton voltar
+            style_prefix "under"
+            textbutton _("Voltar") action ShowMenu("demomenu") pos (-06, 650)activate_sound "audio/gun_reload_lock_or_click_sound.mp3" hover_sound "audio/zipclick.mp3"
+
+
+style about_label is gui_label
+style about_label_text is gui_label_text
+style about_text is gui_text
+
+style about_label_text:
+    size gui.label_text_size

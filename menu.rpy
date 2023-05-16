@@ -42,6 +42,7 @@ screen preferencesdemo():
 
 
 
+
         vbox:
             style_prefix "check"
             label _("Skip")

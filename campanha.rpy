@@ -17,7 +17,6 @@ screen campanha:
 
 
 
-
 screen capitulos:
     add "images/forma.png" xalign 0.5 yalign 0.2
     add im.Scale("images/760446.jpg", 360, 260) xalign 0.5 yalign 0.21#imagem do primeiro capitulo
